@@ -84,8 +84,12 @@ class FoodProviderController extends Controller
      * @param  \App\FoodProvider  $foodProvider
      * @return \Illuminate\Http\Response
      */
-    public function destroy(FoodProvider $foodProvider)
+    public function destroy(FoodProvider $foodProvider, Request $request)
     {
-        //
+        FoodProvider::findOrFail($foodProvider->id)->delete();
+
+        $request->session()->flash('status', 'Food Provider Deleted!');
+
+        return redirect()->route('foodProviders.index');
     }
 }
