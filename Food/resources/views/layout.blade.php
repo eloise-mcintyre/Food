@@ -27,6 +27,12 @@
         </nav>
 
     @yield('content')
+
+    @if(session()->has('status'))
+    <div class="alert alert-success" role="alert">
+        {{ session()->get('status') }}          
+    </div>
+    @endif
     <script scs="{{ mix('js/app.js') }}"></script>
 </body>
 </html>

@@ -7,4 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 class FoodProvider extends Model
 {
     protected $table = 'food_providers';
+
+    protected $fillable = [
+        'name'
+    ];
 }

@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\FoodProvider;
+use App\Http\Requests\StoreFoodProvider;
 use Illuminate\Http\Request;
+// use Validator;
 
 class FoodProviderController extends Controller
 {
@@ -31,12 +33,15 @@ class FoodProviderController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Routing\Redirector|\Illuminate\Http\RedirectResponse
      */
-    public function store(Request $request)
+    public function store(StoreFoodProvider $request)
     {
-        //
+        FoodProvider::create($request->validated());
+
+        $request->session()->flash('status', 'New food provider saved!');
+
+        return redirect()->route('foodProviders.index');
     }
 
     /**
