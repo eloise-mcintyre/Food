@@ -17,11 +17,7 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                 <div class="navbar-nav">
-                {{-- <a class="nav-item nav-link" href="#">Add Provider</a> --}}
                 <a class="nav-item nav-link" href="{{ route('foodProviders.create')}}">Add Provider</a>
-
-                {{-- <a class="nav-item nav-link" href="#">Features</a> --}}
-                {{-- <a class="nav-item nav-link" href="#">Pricing</a> --}}
                 </div>
             </div>
         </nav>
@@ -29,9 +25,11 @@
     @yield('content')
 
     @if(session()->has('status'))
-    <div class="alert alert-success" role="alert">
-        {{ session()->get('status') }}          
-    </div>
+        <div class="container">
+            <div class="alert alert-success" role="alert">
+                {{ session()->get('status') }}          
+            </div>
+        </div>
     @endif
     <script scs="{{ mix('js/app.js') }}"></script>
 </body>
